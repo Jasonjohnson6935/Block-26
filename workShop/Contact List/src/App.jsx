@@ -1,15 +1,18 @@
+import './App.css';
 import { useState } from 'react';
 import ContactList from './components/ContactList';
-import './App.css';
+import SelectedContact from './components/SelectedContact';
 
-function App() {
-  const [count, setCount] = useState(0);
+export default function App() {
+  const [selectedContactId, setSelectedContactId] = useState(null);
 
   return (
     <>
-      <ContactList />
+      {selectedContactId ? (
+        <SelectedContact selectedContactId={selectedContactId} />
+      ) : (
+        <ContactList setSelectedContactId={setSelectedContactId} />
+      )}
     </>
   );
 }
-
-export default App;
